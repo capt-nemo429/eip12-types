@@ -60,7 +60,7 @@ export type DataInput = {
 };
 
 export type UnsignedTransaction = {
-  id?: string;
+  id?: TransactionId;
   inputs: UnsignedInput[];
   dataInputs: UnsignedInput[];
   outputs: BoxCandidate[];
