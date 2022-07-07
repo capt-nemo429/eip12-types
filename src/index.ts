@@ -41,11 +41,7 @@ export type Box = {
   confirmed?: boolean;
 };
 
-export type ContextExtension =
-  | {
-      values: { [key: string]: string };
-    }
-  | {};
+export type ContextExtension = { values: { [key: string]: string } } | {};
 
 export type UnsignedInput = {
   boxId: BoxId;
@@ -66,7 +62,7 @@ export type DataInput = {
 export type UnsignedTransaction = {
   id?: string;
   inputs: UnsignedInput[];
-  dataInputs: DataInput[] | UnsignedInput[];
+  dataInputs: UnsignedInput[];
   outputs: BoxCandidate[];
 };
 
