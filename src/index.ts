@@ -11,14 +11,14 @@ export type TokenAmount = {
   decimals?: number;
 };
 
-export type NonMandatoryRegisters = Partial<{
-  R4: HexString;
-  R5: HexString;
-  R6: HexString;
-  R7: HexString;
-  R8: HexString;
-  R9: HexString;
-}>;
+export type NonMandatoryRegisters = {
+  R4?: HexString;
+  R5?: HexString;
+  R6?: HexString;
+  R7?: HexString;
+  R8?: HexString;
+  R9?: HexString;
+};
 
 export type BoxCandidate = {
   boxId?: BoxId;
@@ -67,21 +67,21 @@ export type UnsignedTransaction = {
 };
 
 export type ProverResult = {
-  proofBytes: HexString;
-  extension: ContextExtension;
+  readonly proofBytes: HexString;
+  readonly extension: ContextExtension;
 };
 
-export type SignedInput = Readonly<{
-  boxId: BoxId;
-  spendingProof: ProverResult;
-}>;
+export type SignedInput = {
+  readonly boxId: BoxId;
+  readonly spendingProof: ProverResult;
+};
 
-export type SignedTransaction = Readonly<{
-  id: TransactionId;
-  inputs: SignedInput[];
-  dataInputs: DataInput[];
-  outputs: Box[];
-}>;
+export type SignedTransaction = {
+  readonly id: TransactionId;
+  readonly inputs: SignedInput[];
+  readonly dataInputs: DataInput[];
+  readonly outputs: Box[];
+};
 
 type EIP12ConnectionOptions = {
   /**
