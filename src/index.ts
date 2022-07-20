@@ -179,4 +179,20 @@ declare global {
    * Ergo dApps Connector interactions API
    */
   const ergo: EIP12ErgoAPI | undefined;
+
+  /**
+   * Request wallet read access.
+   *
+   * @deprecated This function is deprecated and will be removed in a
+   * future release. Use `ergoConnector.connect()` instead.
+   */
+  const ergo_request_read_access: () => Promise<boolean> | undefined;
+
+  /**
+   * Check read access.
+   *
+   * @deprecated This function is deprecated and will be removed in a
+   * future release. Use `ergoConnector.isConnected()` instead.
+   */
+  const ergo_check_read_access: () => Promise<boolean> | undefined;
 }
