@@ -173,7 +173,7 @@ declare global {
   /**
    * Ergo dApp Connector access class
    */
-  const ergoConnector: Record<string, EIP12Connection | undefined> | undefined;
+  const ergoConnector: EIP12Connection | undefined;
 
   /**
    * Ergo dApps Connector interactions API
