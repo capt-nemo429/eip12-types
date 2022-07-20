@@ -121,13 +121,51 @@ export interface EIP12Connection {
 }
 
 export interface EIP12ErgoAPI {
+  /**
+   * Get a list of all unspent boxes tracked by the wallet that it is capable of signing for.
+   * @param amount
+   * @param tokenId
+   */
   get_utxos(amount?: string, tokenId?: string): Promise<Box[]>;
+
+  /**
+   * Get available balance of `tokenId` owned by the wallet.
+   * @param tokenId default = 'ERG'
+   */
   get_balance(tokenId?: string): Promise<string>;
+
+  /**
+   * Get all wallet's used addresses.
+   */
   get_used_addresses(): Promise<string[]>;
+
+  /**
+   * Get all wallet's unused addresses.
+   */
   get_unused_addresses(): Promise<string[]>;
+
+  /**
+   * Get user's preferred change address.
+   */
   get_change_address(): Promise<string>;
+
+  /**
+   * Sign a transaction using wallet's private keys.
+   * @param transaction
+   */
   sign_tx(transaction: UnsignedTransaction): Promise<SignedTransaction>;
-  sign_data(address: string, message: string): Promise<unknown>;
+
+  /**
+   * Sign generic data using the private key associated with `address` if possible.
+   * @param address
+   * @param message
+   */
+  sign_data(address: string, message: String): Promise<unknown>;
+
+  /**
+   * Submit a signed transaction to the network.
+   * @param transaction
+   */
   submit_tx(transaction: SignedTransaction): Promise<string>;
 }
 
@@ -141,20 +179,4 @@ declare global {
    * Ergo dApps Connector interactions API
    */
   const ergo: EIP12ErgoAPI | undefined;
-
-  /**
-   * Request wallet read access.
-   *
-   * @deprecated This function is deprecated and will be removed in a
-   * future release. Use `ergoConnector.connect()` instead.
-   */
-  const ergo_request_read_access: () => Promise<boolean> | undefined;
-
-  /**
-   * Check read access.
-   *
-   * @deprecated This function is deprecated and will be removed in a
-   * future release. Use `ergoConnector.isConnected()` instead.
-   */
-  const ergo_check_read_access: () => Promise<boolean> | undefined;
 }
