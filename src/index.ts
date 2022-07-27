@@ -71,6 +71,11 @@ export type ProverResult = {
   readonly extension: ContextExtension;
 };
 
+export type AuthResult = {
+  signedMessage: string;
+  proof: HexString;
+};
+
 export type SignedInput = {
   readonly boxId: BoxId;
   readonly spendingProof: ProverResult;
@@ -156,6 +161,13 @@ export interface EIP12ErgoAPI {
   sign_tx(transaction: UnsignedTransaction): Promise<SignedTransaction>;
 
   /**
+   * Authenticate an address by signing a message.
+   * @param address prover address
+   * @param message arbitrary message
+   */
+  auth(address: string, message: string): Promise<AuthResult>;
+
+  /**
    * Sign generic data using the private key associated with `address` if possible.
    * @param address
    * @param message
@@ -173,7 +185,7 @@ declare global {
   /**
    * Ergo dApp Connector access class
    */
-  const ergoConnector: EIP12Connection | undefined;
+  const ergoConnector: Record<string, EIP12Connection | undefined> | undefined;
 
   /**
    * Ergo dApps Connector interactions API
