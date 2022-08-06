@@ -122,7 +122,7 @@ export interface EIP12Connection {
   /**
    * Get a {@link EIP12ErgoAPI} instance.
    */
-  getContext: () => Promise<any>;
+  getContext: () => Promise<EIP12ErgoAPI>;
 }
 
 export interface EIP12ErgoAPI {
