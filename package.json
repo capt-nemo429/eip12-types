@@ -1,6 +1,6 @@
 {
   "name": "@nautilus-js/eip12-types",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A type package for Ergo Platform's dApp Connector Protocol (EIP-012)",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

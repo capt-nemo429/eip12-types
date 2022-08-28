@@ -11,6 +11,11 @@ export type TokenAmount = {
   decimals?: number;
 };
 
+export type AssetBalance = {
+  tokenId: TokenId;
+  balance: string;
+};
+
 export type NonMandatoryRegisters = {
   R4?: HexString;
   R5?: HexString;
@@ -137,7 +142,19 @@ export interface EIP12ErgoAPI {
    * Get available balance of `tokenId` owned by the wallet.
    * @param tokenId default = 'ERG'
    */
-  get_balance(tokenId?: string): Promise<string>;
+  get_balance(tokenId: string): Promise<string>;
+  /**
+   * Get available balance of ERG owned by the wallet.
+   */
+  get_balance(tokenId: "ERG"): Promise<string>;
+  /**
+   * Get available balance of ERG owned by the wallet.
+   */
+  get_balance(): Promise<string>;
+  /**
+   * Get available balance of all assets owned by the wallet.
+   */
+  get_balance(tokenId: "all"): Promise<AssetBalance[]>;
 
   /**
    * Get all wallet's used addresses.
