@@ -93,6 +93,16 @@ export type SignedTransaction = {
   readonly outputs: Box[];
 };
 
+export type TokenTargetAmount = {
+  tokenId: string;
+  amount?: string;
+};
+
+export type SelectionTarget = {
+  nanoErgs?: string;
+  tokens?: TokenTargetAmount[];
+};
+
 type EIP12ConnectionOptions = {
   /**
    * Specify if the wallet should instantiate a global `ergo` const with
@@ -132,25 +142,34 @@ export interface EIP12Connection {
 
 export interface EIP12ErgoAPI {
   /**
-   * Get a list of all unspent boxes tracked by the wallet that it is capable of signing for.
+   * Get a list of unspent boxes tracked by the wallet that it is capable of signing for.
    * @param amount
    * @param tokenId
    */
   get_utxos(amount?: string, tokenId?: string): Promise<Box[]>;
 
   /**
+   * Get a list of unspent boxes tracked by the wallet that it is capable of signing for.
+   * @param target
+   */
+  get_utxos(target: SelectionTarget): Promise<Box[]>;
+
+  /**
    * Get available balance of `tokenId` owned by the wallet.
    * @param tokenId default = 'ERG'
    */
   get_balance(tokenId: string): Promise<string>;
+
   /**
    * Get available balance of ERG owned by the wallet.
    */
   get_balance(tokenId: "ERG"): Promise<string>;
+
   /**
    * Get available balance of ERG owned by the wallet.
    */
   get_balance(): Promise<string>;
+
   /**
    * Get available balance of all assets owned by the wallet.
    */
