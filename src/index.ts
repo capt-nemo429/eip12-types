@@ -46,7 +46,7 @@ export type Box = {
   confirmed?: boolean;
 };
 
-export type ContextExtension = { values: { [key: string]: string } } | {};
+export type ContextExtension = { values?: { [key: string]: string } };
 
 export type UnsignedInput = {
   boxId: BoxId;
