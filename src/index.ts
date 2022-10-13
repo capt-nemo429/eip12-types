@@ -7,8 +7,6 @@ export type TokenId = string;
 export type TokenAmount = {
   tokenId: TokenId;
   amount: string;
-  name?: string;
-  decimals?: number;
 };
 
 export type AssetBalance = {
