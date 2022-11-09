@@ -208,7 +208,7 @@ export interface EIP12ErgoAPI {
    */
   sign_data(address: string, message: String): Promise<unknown>;
 
-  /** Get latest block height height */
+  /** Get latest block height */
   get_current_height(): Promise<number>;
 
   /**
