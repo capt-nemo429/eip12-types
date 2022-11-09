@@ -208,6 +208,9 @@ export interface EIP12ErgoAPI {
    */
   sign_data(address: string, message: String): Promise<unknown>;
 
+  /** Get latest block height height */
+  get_current_height(): Promise<number>;
+
   /**
    * Submit a signed transaction to the network.
    * @param transaction
