@@ -58,6 +58,17 @@ export type UnsignedInput = {
   extension: ContextExtension;
 };
 
+export type UnsignedDataInput = {
+  boxId: BoxId;
+  transactionId?: TransactionId;
+  index?: number;
+  ergoTree?: ErgoTree;
+  creationHeight?: number;
+  value?: string;
+  assets?: TokenAmount[];
+  additionalRegisters?: NonMandatoryRegisters;
+};
+
 export type DataInput = {
   boxId: BoxId;
 };
@@ -65,7 +76,7 @@ export type DataInput = {
 export type UnsignedTransaction = {
   id?: TransactionId;
   inputs: UnsignedInput[];
-  dataInputs: UnsignedInput[];
+  dataInputs: UnsignedDataInput[];
   outputs: BoxCandidate[];
 };
 
