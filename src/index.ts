@@ -4,6 +4,10 @@ export type HexString = string;
 export type ErgoTree = string;
 export type TokenId = string;
 
+type JsonObject = { [Key in string]?: JsonValue };
+interface JsonArray extends Array<JsonValue> {}
+type JsonValue = string | number | boolean | JsonObject | JsonArray | null;
+
 export type TokenAmount = {
   tokenId: TokenId;
   amount: string;
@@ -139,6 +143,11 @@ export interface EIP12Connection {
   isConnected: () => Promise<boolean>;
 
   /**
+   * Check if the wallet is authorized.
+   */
+  isAuthorized: () => Promise<boolean>;
+
+  /**
    * Disconnect from wallet and remove the connection in the wallet.
    */
   disconnect: () => Promise<boolean>;
@@ -217,7 +226,7 @@ export interface EIP12ErgoAPI {
    * @param address
    * @param message
    */
-  sign_data(address: string, message: String): Promise<unknown>;
+  sign_data(address: string, message: JsonObject): Promise<HexString>;
 
   /** Get latest block height */
   get_current_height(): Promise<number>;
