@@ -226,7 +226,7 @@ export interface EIP12ErgoAPI {
    * @param address
    * @param message
    */
-  sign_data(address: string, message: JsonObject): Promise<HexString>;
+  sign_data(address: string, message: JsonObject | JsonValue): Promise<HexString>;
 
   /** Get latest block height */
   get_current_height(): Promise<number>;
